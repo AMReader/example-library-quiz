@@ -55,7 +55,7 @@
         .book-recommendation a:hover {
             text-decoration: underline;
         }
-	.retake-button {
+        .retake-button {
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
@@ -83,7 +83,7 @@
         </div>
         <ul id="options1" class="quiz-options">
             <li><label><input type="radio" name="bookType" value="Picture Book" onclick="showFollowUp(); playClap()"> A Picture Book</label></li>
-            <li><label><input type="radio" name="bookType" value="Beginning Reader" onclick="playClap()"> A Beginning Reader</label></li>
+            <li><label><input type="radio" name="bookType" value="Beginning Reader" onclick="showBeginningReaderOptions(); playClap()"> A Beginning Reader</label></li>
             <li><label><input type="radio" name="bookType" value="J Fiction" onclick="playClap()"> J Fiction</label></li>
             <li><label><input type="radio" name="bookType" value="J Non-Fiction" onclick="playClap()"> J Non-Fiction</label></li>
         </ul>
@@ -94,7 +94,7 @@
         <ul id="followUpOptions1" class="quiz-options" style="display:none;">
             <li><label><input type="radio" name="topic" value="Sports" onclick="showSportsOptions(); playClap()"> Sports</label></li>
             <li><label><input type="radio" name="topic" value="Magic" onclick="showMagicOptions(); playClap()"> Magic</label></li>
-            <li><label><input type="radio" name="topic" value="School" onclick="playClap()"> School</label></li>
+            <li><label><input type="radio" name="topic" value="School" onclick="showSchoolOptions(); playClap()"> School</label></li>
         </ul>
 
         <div id="sportsQuestion" class="quiz-question" style="display:none;">
@@ -115,10 +115,37 @@
             <li><label><input type="radio" name="magicTopic" value="Dragon" onclick="showMagicRecommendation('Dragon'); playClap()"> A Dragon</label></li>
         </ul>
 
+        <div id="schoolQuestion" class="quiz-question" style="display:none;">
+            What is your favorite part of school?
+        </div>
+        <ul id="schoolOptions" class="quiz-options" style="display:none;">
+            <li><label><input type="radio" name="schoolPart" value="Lunch" onclick="showSchoolRecommendation('Lunch'); playClap()"> Lunch</label></li>
+            <li><label><input type="radio" name="schoolPart" value="Reading" onclick="showSchoolRecommendation('Reading'); playClap()"> Reading</label></li>
+            <li><label><input type="radio" name="schoolPart" value="Recess" onclick="showSchoolRecommendation('Recess'); playClap()"> Recess</label></li>
+        </ul>
+
+        <div id="beginningReaderQuestion" class="quiz-question" style="display:none;">
+            What kind of book do you want to read?
+        </div>
+        <ul id="beginningReaderOptions" class="quiz-options" style="display:none;">
+            <li><label><input type="radio" name="beginningReaderType" value="Mystery" onclick="showMysteryOptions(); playClap()"> A Mystery</label></li>
+            <li><label><input type="radio" name="beginningReaderType" value="Fantasy" onclick="showBeginningReaderRecommendation('Fantasy'); playClap()"> A Fantasy</label></li>
+            <li><label><input type="radio" name="beginningReaderType" value="Graphic Novel" onclick="showBeginningReaderRecommendation('Graphic Novel'); playClap()"> A Graphic Novel</label></li>
+        </ul>
+
+        <div id="mysteryQuestion" class="quiz-question" style="display:none;">
+            What kind of mystery do you want to read?
+        </div>
+        <ul id="mysteryOptions" class="quiz-options" style="display:none;">
+            <li><label><input type="radio" name="mysteryType" value="Dog" onclick="showMysteryRecommendation('Dog'); playClap()"> A Mystery Solved By a Dog</label></li>
+            <li><label><input type="radio" name="mysteryType" value="Movie Theater" onclick="showMysteryRecommendation('Movie Theater'); playClap()"> A Mystery in a Movie Theater</label></li>
+            <li><label><input type="radio" name="mysteryType" value="Zoo" onclick="showMysteryRecommendation('Zoo'); playClap()"> A Mystery at the Zoo</label></li>
+        </ul>
+
         <div id="bookRecommendation" class="book-recommendation" style="display:none;">
             <p id="recommendationText"></p>
             <img id="bookCover" src="" alt="Book Cover">
-            <p><a id="catalogLink" href="#" target="_blank">Click here to view this book in the library's catalog!</a></p>
+            <p><a id="catalogLink" href="#" target="_blank">Click here to view this book in the library's catalog</a></p>
             <button class="retake-button" onclick="retakeQuiz()">Retake Quiz</button>
         </div>
     </div>
@@ -152,6 +179,27 @@
             document.getElementById("magicOptions").style.display = "block";
         }
 
+        function showSchoolOptions() {
+            document.getElementById("followUpQuestion1").style.display = "none";
+            document.getElementById("followUpOptions1").style.display = "none";
+            document.getElementById("schoolQuestion").style.display = "block";
+            document.getElementById("schoolOptions").style.display = "block";
+        }
+
+        function showBeginningReaderOptions() {
+            document.getElementById("question1").style.display = "none";
+            document.getElementById("options1").style.display = "none";
+            document.getElementById("beginningReaderQuestion").style.display = "block";
+            document.getElementById("beginningReaderOptions").style.display = "block";
+        }
+
+        function showMysteryOptions() {
+            document.getElementById("beginningReaderQuestion").style.display = "none";
+            document.getElementById("beginningReaderOptions").style.display = "none";
+            document.getElementById("mysteryQuestion").style.display = "block";
+            document.getElementById("mysteryOptions").style.display = "block";
+        }
+
         function showRecommendation(sport) {
             document.getElementById("sportsQuestion").style.display = "none";
             document.getElementById("sportsOptions").style.display = "none";
@@ -163,15 +211,15 @@
             if (sport === "Basketball") {
                 recommendationText.innerHTML = 'You want to read a picture book about basketball? You should read <strong>The Legend of Gravity</strong> by Charly Palmer!';
                 bookCover.src = 'legend-of-gravity.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3025239?searchId=78548096&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3025239?searchId=78597658&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
             } else if (sport === "Baseball") {
                 recommendationText.innerHTML = 'You want to read a picture book about baseball? You should read <strong>Baseball Saved Us</strong> by Ken Mochizuki!';
                 bookCover.src = 'baseball-saved-us.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/c8754656-a45a-d64f-1ef8-94be9de0ab3f-eng/Home?searchId=78548434&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/c8754656-a45a-d64f-1ef8-94be9de0ab3f-eng/Home?searchId=78597714&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
             } else if (sport === "Football") {
                 recommendationText.innerHTML = 'You want to read a picture book about football? You should read <strong>Fall Ball</strong> by Peter McCarty!';
                 bookCover.src = 'fall-ball.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/c24f8384-a33e-a32e-8fc5-7ddfa5ff4460-eng/Home?searchId=78548586&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/c24f8384-a33e-a32e-8fc5-7ddfa5ff4460-eng/Home?searchId=78597772&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
             }
 
             document.getElementById("bookRecommendation").style.display = "block";
@@ -188,21 +236,73 @@
             if (topic === "Witch") {
                 recommendationText.innerHTML = 'You want to read a picture book about a witch? You should read <strong>A Spoonful of Frogs</strong> by Casey Lyall!';
                 bookCover.src = 'spoonful-of-frogs.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3089532?searchId=78549679&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3089532?searchId=78598022&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
             } else if (topic === "Unicorn") {
                 recommendationText.innerHTML = 'You want to read a picture book about a unicorn? You should read <strong>Unicorn Day</strong> by Diana Murray!';
                 bookCover.src = 'unicorn-day.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/5a3d1ad0-cffe-f159-6acc-f9fa0b0bbe4b-eng/Home?searchId=78549872&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/5a3d1ad0-cffe-f159-6acc-f9fa0b0bbe4b-eng/Home?searchId=78598145&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
             } else if (topic === "Dragon") {
                 recommendationText.innerHTML = 'You want to read a picture book about a dragon? You should read <strong>Dragon Night</strong> by J.R. Krause!';
                 bookCover.src = 'dragon-night.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/Record/a2747672?searchId=78550016&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a2747672?searchId=78598265&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
             }
 
             document.getElementById("bookRecommendation").style.display = "block";
         }
 
-	function retakeQuiz() {
+        function showSchoolRecommendation(part) {
+            document.getElementById("schoolQuestion").style.display = "none";
+            document.getElementById("schoolOptions").style.display = "none";
+
+            var recommendationText = document.getElementById("recommendationText");
+            var bookCover = document.getElementById("bookCover");
+            var catalogLink = document.getElementById("catalogLink");
+
+            // Add your school-related book recommendations here
+            if (part === "Lunch") {
+                recommendationText.innerHTML = 'You want to read a picture book about lunch at school? You should read <strong>Everyone Loves Lunchtime But Zia</strong> by Jenny Liao!';
+                bookCover.src = 'everyone-loves.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3124504?searchId=78598385&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+            } else if (part === "Reading") {
+                recommendationText.innerHTML = 'You want to read a picture book about reading at school? You should read <strong>No hay nada más chistoso que leer con un oso</strong> by Carmen Oliver!';
+                bookCover.src = 'no-hay-nada.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/85b4ebf1-9c34-4df6-df94-049c8ff7c0b3-spa/Home?searchId=78595811&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+            } else if (part === "Recess") {
+                recommendationText.innerHTML = 'You want to read a picture book about recess? You should read <strong>Tons of Talent</strong> by Janet Sumner Johnson!';
+                bookCover.src = 'tons-of-talent.png'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3256942?searchId=78598520&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+            }
+
+            document.getElementById("bookRecommendation").style.display = "block";
+        }
+
+        function showMysteryRecommendation(type) {
+            document.getElementById("mysteryQuestion").style.display = "none";
+            document.getElementById("mysteryOptions").style.display = "none";
+
+            var recommendationText = document.getElementById("recommendationText");
+            var bookCover = document.getElementById("bookCover");
+            var catalogLink = document.getElementById("catalogLink");
+
+            // Add your mystery-related book recommendations here
+            if (type === "Dog") {
+                recommendationText.innerHTML = 'You want to read a mystery solved by a dog? You should read <strong>King and Kayla and the Case of the Lost Looth</strong> by Dori Hilestad Butler!';
+                bookCover.src = 'lost-tooth.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/59dd85ae-6ed8-9fe8-0f2a-568162e60247-eng/Home?searchId=78596171&recordIndex=2&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+            } else if (type === "Movie Theater") {
+                recommendationText.innerHTML = 'You want to read a mystery in a movie theater? You should read <strong>The Movie Theater Mystery</strong> by Martin Widmark!';
+                bookCover.src = 'movie-theater.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a1419611?searchId=78598676&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+            } else if (type === "Zoo") {
+                recommendationText.innerHTML = 'You want to read a mystery at the zoo? You should read <strong>Cam Jansen and the Mystery at the Monkey House</strong> by David A. Adler!';
+                bookCover.src = 'monkey-house.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a211009?searchId=78598777&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+            }
+
+            document.getElementById("bookRecommendation").style.display = "block";
+        }
+
+        function retakeQuiz() {
             document.getElementById("bookRecommendation").style.display = "none";
             document.getElementById("question1").style.display = "block";
             document.getElementById("options1").style.display = "block";
@@ -210,4 +310,3 @@
     </script>
 </body>
 </html>
-
