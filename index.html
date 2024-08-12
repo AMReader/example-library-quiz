@@ -48,7 +48,7 @@
             margin-bottom: 10px;
         }
         .book-recommendation a {
-            color: #f68e19;
+            color: #e87306;
             text-decoration: none;
             font-weight: bold;
         }
@@ -59,7 +59,7 @@
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
-            background-color: #f68e19;
+            background-color: #e87306;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -69,7 +69,7 @@
             text-decoration: none;
         }
         .retake-button:hover {
-            background-color: #f68e19;
+            background-color: #e80606;
         }
     </style>
 </head>
@@ -129,8 +129,8 @@
         </div>
         <ul id="beginningReaderOptions" class="quiz-options" style="display:none;">
             <li><label><input type="radio" name="beginningReaderType" value="Mystery" onclick="showMysteryOptions(); playClap()"> A Mystery</label></li>
-            <li><label><input type="radio" name="beginningReaderType" value="Fantasy" onclick="showBeginningReaderRecommendation('Fantasy'); playClap()"> A Fantasy</label></li>
-            <li><label><input type="radio" name="beginningReaderType" value="Graphic Novel" onclick="showBeginningReaderRecommendation('Graphic Novel'); playClap()"> A Graphic Novel</label></li>
+            <li><label><input type="radio" name="beginningReaderType" value="Fantasy" onclick="showFantasyOptions(); playClap()"> A Fantasy</label></li>
+            <li><label><input type="radio" name="beginningReaderType" value="Graphic Novel" onclick="showGraphicNovelOptions(); playClap()"> A Graphic Novel</label></li>
         </ul>
 
         <div id="mysteryQuestion" class="quiz-question" style="display:none;">
@@ -140,6 +140,24 @@
             <li><label><input type="radio" name="mysteryType" value="Dog" onclick="showMysteryRecommendation('Dog'); playClap()"> A Mystery Solved By a Dog</label></li>
             <li><label><input type="radio" name="mysteryType" value="Movie Theater" onclick="showMysteryRecommendation('Movie Theater'); playClap()"> A Mystery in a Movie Theater</label></li>
             <li><label><input type="radio" name="mysteryType" value="Zoo" onclick="showMysteryRecommendation('Zoo'); playClap()"> A Mystery at the Zoo</label></li>
+        </ul>
+
+        <div id="fantasyQuestion" class="quiz-question" style="display:none;">
+            What fantasy do you want to read?
+        </div>
+        <ul id="fantasyOptions" class="quiz-options" style="display:none;">
+            <li><label><input type="radio" name="fantasyType" value="Witch" onclick="showFantasyRecommendation('Witch'); playClap()"> A Book About a Witch</label></li>
+            <li><label><input type="radio" name="fantasyType" value="Unicorn" onclick="showFantasyRecommendation('Unicorn'); playClap()"> A Book About a Unicorn</label></li>
+            <li><label><input type="radio" name="fantasyType" value="Ghost" onclick="showFantasyRecommendation('Ghost'); playClap()"> A Book About a Ghost</label></li>
+        </ul>
+
+        <div id="graphicNovelQuestion" class="quiz-question" style="display:none;">
+            What kind of graphic novel do you want to read?
+        </div>
+        <ul id="graphicNovelOptions" class="quiz-options" style="display:none;">
+            <li><label><input type="radio" name="graphicNovelType" value="Kid Judge" onclick="showGraphicNovelRecommendation('Kid Judge'); playClap()"> A Graphic Novel about a Kid Judge</label></li>
+            <li><label><input type="radio" name="graphicNovelType" value="Camping" onclick="showGraphicNovelRecommendation('Camping'); playClap()"> A Graphic Novel About Camping</label></li>
+            <li><label><input type="radio" name="graphicNovelType" value="Ice Cream" onclick="showGraphicNovelRecommendation('Ice Cream'); playClap()"> A Graphic Novel About Ice Cream</label></li>
         </ul>
 
         <div id="bookRecommendation" class="book-recommendation" style="display:none;">
@@ -200,6 +218,20 @@
             document.getElementById("mysteryOptions").style.display = "block";
         }
 
+        function showFantasyOptions() {
+            document.getElementById("beginningReaderQuestion").style.display = "none";
+            document.getElementById("beginningReaderOptions").style.display = "none";
+            document.getElementById("fantasyQuestion").style.display = "block";
+            document.getElementById("fantasyOptions").style.display = "block";
+        }
+
+        function showGraphicNovelOptions() {
+            document.getElementById("beginningReaderQuestion").style.display = "none";
+            document.getElementById("beginningReaderOptions").style.display = "none";
+            document.getElementById("graphicNovelQuestion").style.display = "block";
+            document.getElementById("graphicNovelOptions").style.display = "block";
+        }
+
         function showRecommendation(sport) {
             document.getElementById("sportsQuestion").style.display = "none";
             document.getElementById("sportsOptions").style.display = "none";
@@ -211,15 +243,15 @@
             if (sport === "Basketball") {
                 recommendationText.innerHTML = 'You want to read a picture book about basketball? You should read <strong>The Legend of Gravity</strong> by Charly Palmer!';
                 bookCover.src = 'legend-of-gravity.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3025239?searchId=78597658&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3025239?searchId=78881814&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
             } else if (sport === "Baseball") {
                 recommendationText.innerHTML = 'You want to read a picture book about baseball? You should read <strong>Baseball Saved Us</strong> by Ken Mochizuki!';
                 bookCover.src = 'baseball-saved-us.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/c8754656-a45a-d64f-1ef8-94be9de0ab3f-eng/Home?searchId=78597714&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/c8754656-a45a-d64f-1ef8-94be9de0ab3f-eng/Home?searchId=78881974&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
             } else if (sport === "Football") {
                 recommendationText.innerHTML = 'You want to read a picture book about football? You should read <strong>Fall Ball</strong> by Peter McCarty!';
-                bookCover.src = 'fall-ball.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/c24f8384-a33e-a32e-8fc5-7ddfa5ff4460-eng/Home?searchId=78597772&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+                bookCover.src = 'fall-ball.jpg.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/c24f8384-a33e-a32e-8fc5-7ddfa5ff4460-eng/Home?searchId=78882119&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
             }
 
             document.getElementById("bookRecommendation").style.display = "block";
@@ -234,17 +266,17 @@
             var catalogLink = document.getElementById("catalogLink");
 
             if (topic === "Witch") {
-                recommendationText.innerHTML = 'You want to read a picture book about a witch? You should read <strong>A Spoonful of Frogs</strong> by Casey Lyall!';
+                recommendationText.innerHTML = 'You want to read a picture book about a witch? You should read <strong>A Spoonful of Frogs</strong> by Casey Lyell!';
                 bookCover.src = 'spoonful-of-frogs.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3089532?searchId=78598022&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3089532?searchId=78882267&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
             } else if (topic === "Unicorn") {
                 recommendationText.innerHTML = 'You want to read a picture book about a unicorn? You should read <strong>Unicorn Day</strong> by Diana Murray!';
                 bookCover.src = 'unicorn-day.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/5a3d1ad0-cffe-f159-6acc-f9fa0b0bbe4b-eng/Home?searchId=78598145&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/5a3d1ad0-cffe-f159-6acc-f9fa0b0bbe4b-eng/Home?searchId=78882469&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
             } else if (topic === "Dragon") {
                 recommendationText.innerHTML = 'You want to read a picture book about a dragon? You should read <strong>Dragon Night</strong> by J.R. Krause!';
                 bookCover.src = 'dragon-night.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/Record/a2747672?searchId=78598265&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a2747672?searchId=78882601&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
             }
 
             document.getElementById("bookRecommendation").style.display = "block";
@@ -262,21 +294,73 @@
             if (part === "Lunch") {
                 recommendationText.innerHTML = 'You want to read a picture book about lunch at school? You should read <strong>Everyone Loves Lunchtime But Zia</strong> by Jenny Liao!';
                 bookCover.src = 'everyone-loves.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3124504?searchId=78598385&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a2747672?searchId=78882601&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
             } else if (part === "Reading") {
                 recommendationText.innerHTML = 'You want to read a picture book about reading at school? You should read <strong>No hay nada más chistoso que leer con un oso</strong> by Carmen Oliver!';
                 bookCover.src = 'no-hay-nada.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/85b4ebf1-9c34-4df6-df94-049c8ff7c0b3-spa/Home?searchId=78595811&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/85b4ebf1-9c34-4df6-df94-049c8ff7c0b3-spa/Home?searchId=78882985&recordIndex=2&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
             } else if (part === "Recess") {
                 recommendationText.innerHTML = 'You want to read a picture book about recess? You should read <strong>Tons of Talent</strong> by Janet Sumner Johnson!';
                 bookCover.src = 'tons-of-talent.png'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3256942?searchId=78598520&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3256942?searchId=78883620&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
             }
 
             document.getElementById("bookRecommendation").style.display = "block";
         }
 
-        function showMysteryRecommendation(type) {
+        function showFantasyRecommendation(type) {
+            document.getElementById("fantasyQuestion").style.display = "none";
+            document.getElementById("fantasyOptions").style.display = "none";
+
+            var recommendationText = document.getElementById("recommendationText");
+            var bookCover = document.getElementById("bookCover");
+            var catalogLink = document.getElementById("catalogLink");
+
+            // Add your fantasy-related book recommendations here
+            if (type === "Witch") {
+                recommendationText.innerHTML = 'You want to read a beginning reader about a witch? You should read <strong>Maxie Wiz and Her Dragon</strong> by Michelle Meadows!';
+                bookCover.src = 'maxie-wiz.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3122906?searchId=78875444&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+            } else if (type === "Unicorn") {
+                recommendationText.innerHTML = 'You want to read a beginning reader about a unicorn? You should read <strong>La primera pijamada de Uni</strong> by Amy Krouse Rosenthal!';
+                bookCover.src = 'uni.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/c5db710f-eb49-a52c-269c-5be5e2108ecc-spa/Home?searchId=78875809&recordIndex=4&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+            } else if (type === "Ghost") {
+                recommendationText.innerHTML = 'You want to read a beginning reader about a ghost? You should read <strong>The Haunted House Next Door</strong> by Andres Miedoso!';
+                bookCover.src = 'desmond-cole.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a2091706?searchId=78877906&recordIndex=3&page=1&referred=resultIndex'; /* Replace with actual URL */
+            }
+
+            document.getElementById("bookRecommendation").style.display = "block";
+        }
+
+        function showGraphicNovelRecommendation(type) {
+            document.getElementById("graphicNovelQuestion").style.display = "none";
+            document.getElementById("graphicNovelOptions").style.display = "none";
+
+            var recommendationText = document.getElementById("recommendationText");
+            var bookCover = document.getElementById("bookCover");
+            var catalogLink = document.getElementById("catalogLink");
+
+            // Add your graphic novel-related book recommendations here
+            if (type === "Kid Judge") {
+                recommendationText.innerHTML = 'You want to read a beginning graphic novel about a kid judge? You should read <strong>The Doggie Defendant</strong> by Milo Stone!';
+                bookCover.src = 'judge-kim.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3120002?searchId=78878999&recordIndex=2&page=1&referred=resultIndex'; /* Replace with actual URL */
+            } else if (type === "Camping") {
+                recommendationText.innerHTML = 'You want to read a beginning graphic novel about camping? You should read <strong>Camp-Out</strong> by Kelly Starling Lyons!';
+                bookCover.src = 'camp-out.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a3149074?searchId=78879136&recordIndex=5&page=1&referred=resultIndex'; /* Replace with actual URL */
+            } else if (type === "Ice Cream") {
+                recommendationText.innerHTML = 'You want to read a beginning graphic novel about ice cream? You should read <strong>The Giant Ice Cream Mess</strong> by Tina Kügler!';
+                bookCover.src = 'ice-cream.jpg'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a2971766?searchId=78879290&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+            }
+
+            document.getElementById("bookRecommendation").style.display = "block";
+        }
+
+	function showMysteryRecommendation(type) {
             document.getElementById("mysteryQuestion").style.display = "none";
             document.getElementById("mysteryOptions").style.display = "none";
 
@@ -286,17 +370,17 @@
 
             // Add your mystery-related book recommendations here
             if (type === "Dog") {
-                recommendationText.innerHTML = 'You want to read a mystery solved by a dog? You should read <strong>King and Kayla and the Case of the Lost Looth</strong> by Dori Hilestad Butler!';
+                recommendationText.innerHTML = 'You want to read a beginning reader about a mystery solved by a dog? You should read <strong>King and Kayla and the Case of the Lost tooth</strong> by Dori Hillestad Butler!';
                 bookCover.src = 'lost-tooth.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/59dd85ae-6ed8-9fe8-0f2a-568162e60247-eng/Home?searchId=78596171&recordIndex=2&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/GroupedWork/59dd85ae-6ed8-9fe8-0f2a-568162e60247-eng/Home?searchId=78885264&recordIndex=1&page=1&searchSource=local&referred=resultIndex'; /* Replace with actual URL */
             } else if (type === "Movie Theater") {
-                recommendationText.innerHTML = 'You want to read a mystery in a movie theater? You should read <strong>The Movie Theater Mystery</strong> by Martin Widmark!';
+                recommendationText.innerHTML = 'You want to read a beginning reader about a mystery in a movie theater? You should read <strong>The Movie Theater Mystery</strong> by Martin Widmark!';
                 bookCover.src = 'movie-theater.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/Record/a1419611?searchId=78598676&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a1419611?searchId=78885566&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
             } else if (type === "Zoo") {
-                recommendationText.innerHTML = 'You want to read a mystery at the zoo? You should read <strong>Cam Jansen and the Mystery at the Monkey House</strong> by David A. Adler!';
+                recommendationText.innerHTML = 'You want to read a beginning reader at a mystery at the zoo? You should read <strong>Cam Jansen and the Mystery at the Monkey House</strong> by David A. Adler!';
                 bookCover.src = 'monkey-house.jpg'; /* Replace with actual URL */
-                catalogLink.href = 'https://ams.swanlibraries.net/Record/a211009?searchId=78598777&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
+                catalogLink.href = 'https://ams.swanlibraries.net/Record/a211009?searchId=78885781&recordIndex=1&page=1&referred=resultIndex'; /* Replace with actual URL */
             }
 
             document.getElementById("bookRecommendation").style.display = "block";
